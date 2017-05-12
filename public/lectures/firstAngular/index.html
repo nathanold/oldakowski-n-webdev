@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tuhdooApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="app.js"></script>
+    <meta charset="UTF-8">
+    <title>tuhdoo</title>
+</head>
+
+<body>
+<div class="container">
+    <h1>tuhdoo</h1>
+
+    <div ng-controller="tuhdooListController"
+            ng-init = "">
+        <label>Title</label>
+        <input ng-model="tuhdoo.title" class="form-control"/>
+        <!-- {{tuhdoo}}       two way binding -->
+        <label>Details</label>
+        <textarea ng-model="tuhdoo.details" class="form-control">
+
+        </textarea>
+        <button ng-click="addTuhdoo(tuhdoo);tuhdoo={}"
+                class="btn btn-block btn-primary">
+            Add Tuhdoo!
+        </button>
+        <button ng-click="updateTuhdoo(tuhdoo);tuhdoo={}"
+                class="btn btn-block btn-success">
+            Update Tuhdoo!
+        </button>
+
+        <ul class="list-group">
+            <li ng-repeat="tuhdoo in tuhdoos" class="list-group-item">
+
+                <span ng-click="removeTuhdoo(tuhdoo)"
+                      class="pull-right glyphicon glyphicon-remove"></span>
+                <span ng-click="selectTuhdoo($index)"
+                      class="pull-right glyphicon glyphicon-pencil"></span>
+                <h3> {{tuhdoo.title}} </h3>
+                <p>{{tuhdoo.details}}</p>
+                <label>{{tuhdoo.date | date}}</label>
+
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
