@@ -7,13 +7,7 @@
                 return items.slice().reverse();
             };
         });
-    var connectionString = 'mongodb://127.0.0.1:27017/test'; // for local
-    if(process.env.MLAB_USERNAME) { // check if running remotely
-        var username = process.env.MLAB_USERNAME; // get from environment
-        var password = process.env.MLAB_PASSWORD;
-        connectionString = 'mongodb://' + username + ':' + password;
-        connectionString += '@ds137141.mlab.com:37141/heroku_vj9g0c7t'; // user yours
-    }
+
 
     function TestController($http) {
         var vm = this;
