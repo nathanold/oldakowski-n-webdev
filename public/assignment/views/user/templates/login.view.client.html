@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Login</h1>
+    <div ng-show="vm.message" class="alert alert danger">{{vm.message}}</div>
+
+    <label>Username</label>
+    <input type="text"
+           class="form-control"
+           ng-model="username"/>
+    <!--placeholder="Username"-->
+
+    <label>Password</label>
+    <input type="password"
+           class="form-control"
+           ng-model="password"/>
+    <!--placeholder="Password"-->
+    <a ng-click="vm.login(username, password)"
+       class="btn btn-block btn-primary">
+        Login
+    </a>
+    <a href="#!/register"
+       class="btn btn-block btn-success">
+        Register
+    </a>
+</div>

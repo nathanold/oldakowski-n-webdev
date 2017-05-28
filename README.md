@@ -1,8 +1,14 @@
-# web-dev-template
+I'm Nathan, a second-ish year undergraduate student studying Data Science here at Northeastern. 
+I haven't work a ton with web development, but last semester I took Database Design, 
+and for our final project we made a website with social networking features using php. 
+In July, I will start my co-op at the MBTA as an assistant data scientist- I am very excited!
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+This repository is to hold my assignments for CS 4550: Web Development.
+
+Important Links:
+
+Heroku: https://oldakowski-webdev.herokuapp.com
+
+Project Link:
+
+Assignment Link: https://oldakowski-webdev.herokuapp.com/assignment/index.html

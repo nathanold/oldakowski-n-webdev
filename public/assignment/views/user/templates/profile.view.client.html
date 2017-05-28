@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+        <a class="navbar-brand">
+            Profile
+        </a>
+        <ul class="nav navbar-nav pull-right">
+            <li>
+                <a class = "btn" ng-click="model.updateInformation(model.user, model.user.email,model.user.firstName,model.user.lastName)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <h1>Profile</h1>
+
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input readonly type="text" class="form-control" id="username" placeholder="Username"
+                   ng-model="model.user.username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com"
+                   ng-model="model.user.email">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" class="form-control" id="first-name" placeholder="Alice"
+                   ng-model="model.user.firstName">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Wonderland"
+                   ng-model="model.user.lastName">
+        </div>
+    </form>
+    <a class="btn btn-primary btn-block"
+       href="#!/user/{{model.user._id}}/website">Websites</a>
+    <a class="btn btn-danger  btn-block"
+       href="#!/login">Logout</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="col-xs-12 pull-right navbar-brand">
+
+            <span class="glyphicon glyphicon-user pull-right"></span>
+
+        </div>
+    </div>
+</nav>
