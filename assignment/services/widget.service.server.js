@@ -29,7 +29,8 @@ var widgets = [
 
 function createWidget(req, res) {
     var widget = req.body;
-    widget._id = (new Date().getTime() + "");
+    console.log(widget.pageId);
+    console.log(widget.widgetType);
     widgets.push(widget);
     res.send(widget);
     console.log("Widget Created");

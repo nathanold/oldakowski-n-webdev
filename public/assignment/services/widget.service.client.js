@@ -14,8 +14,9 @@
         };
         return api;
 
-        function createWidget(widget,pageId) {
-           var url = '/api/page/'+pageId+'/widget';
+        function createWidget(widget) {
+            console.log("WIDGET: " + widget.widgetType);
+           var url = '/api/page/'+widget.pageId+'/widget';
             return $http.post(url, widget)
                 .then(function (response) {
                     return response.data;
