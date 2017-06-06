@@ -7,12 +7,18 @@
         var model = this;
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
+
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
-            console.log(model.pages);
+            console.log(model.websiteId);
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(renderPages);
+        }
+        init();
+        function renderPages(pages) {
+            model.pages = pages;
         }
 
-        init();
     }
 
 })();

@@ -59,14 +59,24 @@
                 controller: 'widgetListController',
                 controllerAs: 'model'
             })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {
+                templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
+                controller: 'NewWidgetController',
+                controllerAs: 'model'
+            })
             .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'EditWidgetController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {
-                templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
-                controller: 'NewWidgetController',
+            /* for testing purposes
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
+                templateUrl: 'views/widget/editors/widget-image-edit.view.client.html'
+            })
+            */
+            .when('/widget/:widgetId/search', {
+                templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
+                controller: 'flickrController',
                 controllerAs: 'model'
             })
     }

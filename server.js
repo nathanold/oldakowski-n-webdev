@@ -1,5 +1,5 @@
-var express = require('express'); // creates an instance of the express lib
-var app = express();
+var app = require('./express'); // creates an instance of the express lib
+var express = app.express;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/public')); //anything under the public dire
 
 require ("./test/app.js")(app);
 //require ("C:/Users/natha/Google Drive/CS4550/Assignment1Template/oldakowski-n-webdev/public/assignment/app.js")(app);
+require ("./assignment/app.js");
 
 var port = process.env.PORT || 3000;
 

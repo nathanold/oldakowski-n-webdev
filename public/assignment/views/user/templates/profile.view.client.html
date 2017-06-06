@@ -6,9 +6,10 @@
         </a>
         <ul class="nav navbar-nav pull-right">
             <li>
-                <a class = "btn" ng-click="model.updateInformation(model.user, model.user.email,model.user.firstName,model.user.lastName)">
+                <a class = "btn" ng-click="model.updateUser(model.user)">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a></li>
+
         </ul>
     </div>
 </nav>
@@ -41,6 +42,8 @@
     </form>
     <a class="btn btn-primary btn-block"
        href="#!/user/{{model.user._id}}/website">Websites</a>
+    <a class="btn btn-danger  btn-block"
+       ng-click="model.deleteUser(model.user)">Unregister</a>
     <a class="btn btn-danger  btn-block"
        href="#!/login">Logout</a>
 </div>

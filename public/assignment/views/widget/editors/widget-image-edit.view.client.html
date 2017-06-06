@@ -1,52 +1,40 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <a href="widget-list.html" class="navbar-brand">
-            <span class="glyphicon glyphicon-menu-left pull-left"></span>
-        </a>
-        <a class="navbar-brand">
-            Widget Edit
-        </a>
-        <ul class="nav navbar-nav pull-right">
-            <li><a href="widget-list.html"><span class="glyphicon glyphicon-ok"></span>
-            </a></li>
-        </ul>
-    </div>
-</nav>
-<body>
-
 <div class="container-fluid">
-    <label>
+    <!--<label>
         Name
     </label>
     <input type="text" class="form-control"/>
-    <label>
+    -->
+   <!-- <label>
         Text
     </label>
     <input type="text" class="form-control"/>
+    NEITHER OF THESE ARE USED
+    -->
     <label>
         URL
     </label>
-    <input type="text" class="form-control" value="https://i.kinja-img.com/gawker-media/image01030.png"/>
+    <input type="text" class="form-control" ng-model="model.widget.url"/>
     <label>
         Width
     </label>
-    <input type="number" class="form-control" value="100%"/>
+    <input type="number" class="form-control" ng-model="model.widget.width"/>
+    <!--
     <label>
         Upload
     </label>
     <input type="file" class="form-control" accept="image/*">
     <a class="btn btn-success  btn-block"
        href="#">Upload Image</a>
-    <a class="btn btn-danger  btn-block"
-       href="widget-list.html">Delete</a>
-</div>
+    -->
+<a class = "btn btn-block btn-success" href = "#!/widget/321/search"> <!--refactor for the assignment-->
+    Search!
+</a>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="col-xs-12 pull-right navbar-brand">
-            <a href="../user/profile.html">
-                <span class="glyphicon glyphicon-user pull-right"></span>
-            </a>
-        </div>
-    </div>
-</nav>
+    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="widgetId"  value="321"   style="display: none"/>
+        <input  name="width"  value="100%"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+    </form>
+
+</div>

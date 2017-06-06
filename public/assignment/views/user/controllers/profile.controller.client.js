@@ -2,27 +2,37 @@
     angular.module('WebAppMaker')
         .controller('profileController', profileController);
 
-    function profileController($location, $routeParams, userService) {
+    function profileController($location, userService, $routeParams) {
+
         var model = this;
         var userId = $routeParams['userId'];
-        function init() {
-            model.user = userService.findUserById(userId);
-        }
-        init();
-        model.updateInformation = function (user, email, firstName, lastName) {
-            console.log(user);
-            console.log(email + " " + firstName + " " + lastName);
-            var updatedUser = {
-                _id: user._id,
-                username: user.username,
-                password: user.password,
-                email: user.email,
-                firstName: user.firstName,
-                lastName: user.lastName
-            };
-            console.log(updatedUser);
-            userService.updateUser(userId, updatedUser);
-        };
-    }
+        model.updateUser = updateUser;
+        model.deleteUser = deleteUser;
 
+        userService
+            .findUserById(userId)
+            .then(renderUser);
+
+        function renderUser (user) {
+            model.user = user;
+        }
+
+        function deleteUser(user) {
+            console.log(user.username);
+            userService
+                .deleteUser(user._id)
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
+
+        function updateUser(user) {
+            console.log("controller user: "+user);
+            userService
+                .updateUser(user)
+                .then(function () {
+                    model.message = "User updated successfully";
+                });
+        }
+    }
 })();

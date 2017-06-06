@@ -7,20 +7,38 @@
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findAllWebsitesForUser(model.userId)
+                .then(renderWebsites);
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(renderWebsite);
         }
 
         init();
+        function renderWebsites(websites) {
+            model.websites = websites;
+        }
 
-        model.deleteWebsite = function(websiteId){
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/' + model.userId + '/website');
+        function renderWebsite(website) {
+            model.website = website;
+        }
+
+        model.deleteWebsite = function (websiteId) {
+            websiteService
+                .deleteWebsite(model.websiteId)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website');
+                })
         };
 
-        model.updateWebsite = function(websiteId, website){
-            websiteService.updateWebsite(websiteId, website);
-            $location.url('/user/' + model.userId + '/website');
+        model.updateWebsite = function (website) {
+            console.log('updating ' + website._id);
+            websiteService
+                .updateWebsite(website)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website');
+                })
         };
     }
 })();

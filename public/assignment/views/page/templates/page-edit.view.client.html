@@ -20,13 +20,13 @@
     </label>
     <input type="text" class="form-control" ng-model="model.page.name"/>
     <label>
-        Title
+        Description
     </label>
     <input type="text" class="form-control" ng-model="model.page.description"/>
     <a class="btn btn-danger btn-block"
-       ng-click="model.deletePage(pageId)">Delete</a>
+       ng-click="model.deletePage(model.page._id)">Delete</a>
     <a class="btn btn-success  btn-block"
-       ng-click="model.updatePage(pageId, model.page)">Update</a>
+       ng-click="model.updatePage(model.page)">Update</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -42,12 +42,18 @@
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         function init() {
-            model.widgets = widgetService.findWidgetByPageId(model.pageId);
+            widgetService
+                .findWidgetByPageId(model.pageId)
+                .then(renderWidgets);
         }
         init();
         model.trustThisContent = trustThisContent;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.getWidgetUrlForType = getWidgetUrlForType;
+
+        function renderWidgets(widgets){
+            model.widgets = widgets;
+        }
 
         function getWidgetUrlForType(type) {
             return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
