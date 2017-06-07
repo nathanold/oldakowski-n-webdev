@@ -74,7 +74,7 @@
                 templateUrl: 'views/widget/editors/widget-image-edit.view.client.html'
             })
             */
-            .when('/widget/:widgetId/search', {
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/search', {
                 templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'flickrController',
                 controllerAs: 'model'

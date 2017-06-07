@@ -1,15 +1,4 @@
-<div class="container-fluid">
-    <!--<label>
-        Name
-    </label>
-    <input type="text" class="form-control"/>
-    -->
-   <!-- <label>
-        Text
-    </label>
-    <input type="text" class="form-control"/>
-    NEITHER OF THESE ARE USED
-    -->
+<div class="container">
     <label>
         URL
     </label>
@@ -18,23 +7,19 @@
         Width
     </label>
     <input type="number" class="form-control" ng-model="model.widget.width"/>
-    <!--
-    <label>
-        Upload
-    </label>
-    <input type="file" class="form-control" accept="image/*">
-    <a class="btn btn-success  btn-block"
-       href="#">Upload Image</a>
-    -->
-<a class = "btn btn-block btn-success" href = "#!/widget/321/search"> <!--refactor for the assignment-->
-    Search!
-</a>
 
-    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
-        <input  name="myFile"    type="file" class="form-control"/>
-        <input  name="widgetId"  value="321"   style="display: none"/>
-        <input  name="width"  value="100%"   style="display: none"/>
-        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+    <a class="btn btn-block btn-success" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">
+        Search!
+    </a>
+
+    <form action="/api/assignment/upload" method="post" enctype="multipart/form-data">
+        <input name="myFile" type="file" class="form-control"/>
+        <input name="widgetId" value={{model.widgetId}} style="display: none"/>
+        <input name="pageId" value={{model.pageId}} style="display: none"/>
+        <input name="websiteId" value={{model.websiteId}} style="display: none"/>
+        <input name="userId" value={{model.userId}} style="display: none"/>
+        <input name="width" value={{model.widget.width}} style="display: none"/>
+        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
     </form>
 
 </div>

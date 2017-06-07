@@ -55,6 +55,7 @@ function findWidgetById(req, res) {
     res.send(widget);
 }
 
+
 function updateWidget(req, res) {
     var widget = req.body;
     var widgetId = req.params.widgetId;
@@ -81,6 +82,12 @@ function deleteWidget(req, res) {
 
 function uploadImage(req, res) {
     var widgetId = req.body.widgetId;
+    var userId = req.body.userId;
+    var pageId = req.body.pageId;
+    var websiteId = req.body.websiteId;
+
+
+    console.log('widgetId upd: ' + widgetId);
     var width = req.body.width;
     var myFile = req.file;
 
@@ -92,10 +99,25 @@ function uploadImage(req, res) {
     var mimetype = myFile.mimetype;
 
     console.log(myFile);
-    //widget = getWidgetById(widgetId);
-    var widget = {};
-    widget.url = '/assignment/uploads/' + filename;
+    var widgetUpdated = {};
 
-    var callbackUrl = "/assignment/#!/user/456/website/456/page/321/widget/345";
+    widgets.find(function (widget) {
+        console.log(widget._id);
+        console.log(widgetId);
+        if (widget._id === widgetId) {
+            console.log('updating');
+            widgetUpdated = widget;
+            console.log(widgetUpdated);
+        }
+        console.log('done');
+    });
+    widgetUpdated.url = '/assignment/uploads/' + filename;
+    for (var w in widgets) {
+        if (widgetId === widgets[w]._id) {
+            widgets[w] = widgetUpdated;
+        }
+    }
+    var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/";
+    console.log(callbackUrl);
     res.redirect(callbackUrl);
 }
