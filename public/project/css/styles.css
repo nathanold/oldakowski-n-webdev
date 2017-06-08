@@ -1,0 +1,13 @@
+.news-banner{
+    font-size:600%;
+    text-align: center;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+    color: #ffffff;
+    background-color: #539097;
+    border-color: #539097;
+}

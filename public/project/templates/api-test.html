@@ -1,10 +1,11 @@
 <div class="container-fluid">
     <div class="input-group">
-        <input ng-model="searchText"
+        <input ng-model="source"
                type="text"
                class="form-control">
         <span class="input-group-btn">
-            <a ng-click="model.getNews()"
+
+            <a ng-click="model.getNews(source)"
                class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
             </a>
@@ -12,6 +13,12 @@
     </div>
 
     <!--{{model.news}}-->
-    {{model.news.data}}
+    <div class="row">
+        <div class="col-xs-4" ng-repeat="article in model.news.articles">
+            <img src={{article.urlToImage}}/>
+        </div>
+        {{article.urlToImage}}
+    </div>
+    {{model.news}}
 
 </div>
