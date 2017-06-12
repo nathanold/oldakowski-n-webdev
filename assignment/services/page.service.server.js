@@ -56,7 +56,6 @@ function updatePage(req, res) {
 
 function deletePage(req, res) {
     var pageId = req.params.pageId;
-    console.log('deleting '+ pageId);
     pageModel
         .deletePage(pageId)
         .then(function () {

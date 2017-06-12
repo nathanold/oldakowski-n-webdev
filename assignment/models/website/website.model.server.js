@@ -11,7 +11,6 @@ websiteModel.deleteWebsite = deleteWebsite;
 
 module.exports = websiteModel;
 function createWebsite(website) {
-    console.log("Creating website from website model " + website);
     return websiteModel.create(website);
 }
 
@@ -30,6 +29,5 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 function deleteWebsite(websiteId) {
-    console.log('website id for deletion: '+ websiteId);
     return websiteModel.remove({_id: websiteId});
 }

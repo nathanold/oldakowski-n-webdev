@@ -15,7 +15,8 @@
         return api;
 
         function createWidget(widget) {
-            console.log("WIDGET: " + widget.type);
+            console.log("WIDGET: " + JSON.stringify(widget));
+
            var url = '/api/page/'+widget.pageId+'/widget';
             return $http.post(url, widget)
                 .then(function (response) {

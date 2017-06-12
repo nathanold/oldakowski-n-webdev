@@ -31,8 +31,8 @@ var widgets = [
 function createWidget(req, res) {
     var widget = req.body;
     console.log('widgetType: ' + widget.widgetType);
-    var pageId = req.params.pageId;
-    widget._page = pageId;
+    //var pageId = req.params.pageId;
+    //widget._page = pageId;
 
     console.log('creating');
     console.log(JSON.stringify(widget));

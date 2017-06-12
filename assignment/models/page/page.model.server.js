@@ -12,8 +12,6 @@ pageModel.deletePage = deletePage;
 module.exports = pageModel;
 
 function createPage(page) {
-    console.log('creating server page');
-    console.log(page);
     return pageModel.create(page);
 }
 
@@ -32,6 +30,5 @@ function updatePage(pageId, newPage) {
 }
 
 function deletePage(pageId) {
-    console.log('page id for deletion: '+ pageId);
     return pageModel.remove({_id: pageId});
 }

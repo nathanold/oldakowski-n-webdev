@@ -12,7 +12,7 @@ userModel.deleteUser = deleteUser;
 
 module.exports = userModel;
 function createUser(user) {
-    console.log(user);
+
     return userModel.create(user);
 }
 
