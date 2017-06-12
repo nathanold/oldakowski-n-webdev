@@ -8,6 +8,7 @@
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         model.widgetId = $routeParams['widgetId'];
+        console.log("widgetID:"+ model.widgetId);
         function init() {
             widgetService
                 .findWidgetByPageId(model.pageId)

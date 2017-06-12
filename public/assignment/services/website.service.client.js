@@ -51,23 +51,12 @@
 
         function deleteWebsite(websiteId) {
             var url = "/api/website/" + websiteId;
+            console.log('deletion url: ' + url);
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
                 });
         }
-/*
-        function findWebsiteByUser(userId) {
-            var website = websites.find(function (website) {
-                return website.developerId === userId;
-            });
-            if (typeof website === 'undefined') {
-                return null;
-            }
-            else
-                return website;
-        }
-*/
 
 
     }

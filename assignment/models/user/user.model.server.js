@@ -10,8 +10,9 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 
-module.export = userModel;
+module.exports = userModel;
 function createUser(user) {
+    console.log(user);
     return userModel.create(user);
 }
 

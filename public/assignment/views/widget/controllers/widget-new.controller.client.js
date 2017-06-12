@@ -20,15 +20,13 @@
 
         model.createWidget = function (type) {
             var newWidget = {};
-            newWidget.widgetType = type +'';
-            newWidget.pageId = model.pageId;
-            newWidget._id = (new Date().getTime() + "");
-            console.log(newWidget.widgetType);
+            newWidget.type = type + '';
             widgetService
                 .createWidget(newWidget)
-                .then(function () {
-                    console.log('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + newWidget._id);
-                        $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + newWidget._id);
+                .then(function (widget) {
+                    console.log(JSON.stringify(widget));
+                        console.log('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+                        $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
                     }
                 )
         }

@@ -15,7 +15,7 @@
         return api;
 
         function createWidget(widget) {
-            console.log("WIDGET: " + widget.widgetType);
+            console.log("WIDGET: " + widget.type);
            var url = '/api/page/'+widget.pageId+'/widget';
             return $http.post(url, widget)
                 .then(function (response) {
@@ -49,8 +49,8 @@
         }
 
         function findWidgetById(widgetId) {
+            console.log('client widget ID: '+widgetId);
             var url = '/api/widget/'+widgetId;
-
             return $http.get(url)
                 .then(function (response) {
                     console.log(response.data);

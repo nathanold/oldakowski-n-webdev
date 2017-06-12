@@ -15,7 +15,6 @@
 
         function createPage(page) {
             var url = '/api/website/' + page.websiteId + '/page';
-
             return $http.post(url, page)
                 .then(function (response) {
                     return response.data;
@@ -40,7 +39,7 @@
         }
 
         function updatePage(page) {
-            var url = '/api/page/'+page._id;
+            var url = '/api/page/' + page._id;
             return $http.put(url, page)
                 .then(function (response) {
                     return response.data;
@@ -48,10 +47,11 @@
         }
 
         function deletePage(pageId) {
-            var url = 'api/page/'+pageId;
-            console.log(url);
+            var url = "api/page/" + pageId;
+            console.log(url + " for deletion");
             return $http.delete(url)
                 .then(function (response) {
+                    console.log(response);
                     return response.data;
                 });
         }
