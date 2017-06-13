@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public')); //anything under the public dire
 
 require ("./assignment/app.js");
 
-require ("./test/app.js")(app);
+//require ("./test/app.js")(app);
 //require ("C:/Users/natha/Google Drive/CS4550/Assignment1Template/oldakowski-n-webdev/public/assignment/app.js")(app);
 
 var port = process.env.PORT || 3000;
