@@ -6,7 +6,12 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'home.html'
+                templateUrl: 'views/home/templates/home.html',
+                controller: 'homeController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
@@ -18,25 +23,37 @@
                 controller: 'registerController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId', {
+            .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
             .when('/user/:userId/website', {
                 templateUrl: 'views/website/templates/website-list.view.client.html'
-                ,controller: 'websiteListController',
-                controllerAs: 'model'
+                , controller: 'websiteListController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
             .when('/user/:userId/website/new', {
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 controller: 'websiteNewController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
             .when('/user/:userId/website/:websiteId', {
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 controller: 'websiteEditController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
             .when('/user/:userId/website/:websiteId/page', {
                 templateUrl: 'views/page/templates/page-list.view.client.html',
@@ -70,14 +87,40 @@
                 controllerAs: 'model'
             })
             /* for testing purposes
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
-                templateUrl: 'views/widget/editors/widget-image-edit.view.client.html'
-            })
-            */
+             .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
+             templateUrl: 'views/widget/editors/widget-image-edit.view.client.html'
+             })
+             */
             .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/search', {
                 templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'flickrController',
                 controllerAs: 'model'
             })
+    }
+
+    function checkLoggedIn($q, $location, userService) {
+        var deferred = $q.defer();
+        userService.checkLoggedIn()
+            .then(function (currentUser) {
+                if (currentUser === '0') {
+                    deferred.reject();
+                    $location.url('/login')
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+    function checkCurrentUser($q, $location, userService) {
+        var deferred = $q.defer();
+        userService.checkLoggedIn()
+            .then(function (currentUser) {
+                if (currentUser === '0') {
+                    deferred.resolve({});
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
     }
 })();

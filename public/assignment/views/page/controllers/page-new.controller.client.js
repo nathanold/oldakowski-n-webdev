@@ -22,6 +22,10 @@
 
 // implementation
         function createPage(page) {
+            if(!page.name){
+                model.message = "A name is required";
+                return;
+            }
             page.websiteId = model.websiteId;
             console.log(page.title);
             pageService

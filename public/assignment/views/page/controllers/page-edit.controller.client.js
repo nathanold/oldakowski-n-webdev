@@ -57,6 +57,10 @@
                 });
         };
         model.updatePage = function (page) {
+            if(!page.name){
+                model.message = "A name is required";
+                return;
+            }
             pageService
                 .updatePage(page)
                 .then(function () {

@@ -1,17 +1,21 @@
 <div class="container">
     <h1>Login</h1>
-    <div ng-show="vm.message" class="alert alert danger">{{vm.message}}</div>
+    <div ng-show="vm.message" class="alert alert-danger">{{vm.message}}</div>
 
     <label>Username</label>
-    <input type="text"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+           type="text"
            class="form-control"
-           ng-model="username"/>
+           ng-model="username"
+           required
+    />
     <!--placeholder="Username"-->
 
     <label>Password</label>
     <input type="password"
            class="form-control"
-           ng-model="password"/>
+           ng-model="password"
+           required/>
     <!--placeholder="Password"-->
     <a ng-click="vm.login(username, password)"
        class="btn btn-block btn-primary">
@@ -20,5 +24,9 @@
     <a href="#!/register"
        class="btn btn-block btn-success">
         Register
+    </a>
+    <a href="/auth/google" class="btn btn-danger btn-block">
+        <span class="fa fa-google-plus"></span>
+        Google
     </a>
 </div>

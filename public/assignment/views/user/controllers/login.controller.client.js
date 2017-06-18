@@ -8,25 +8,35 @@
         var model = this;
 
         model.login = function (username, password) {
-            console.log('trying to find: '+username +" "+ password);
+            console.log('username: ' + username);
+            console.log('password: ' + password);
+            if (!username) {
+                model.message = "Username is required, please try again";
+                console.log('no username');
+                return;
+            }
+            if (!password) {
+                model.message = "Password is required, please try again";
+                console.log('no pw');
+                return;
+            }
             userService
-                .findUserByCredentials(username, password)
+            // .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(login, handleError);
+
             function handleError(error) {
-                console.log('error');
                 model.message = "Username " + username + " not found, please try again";
             }
 
             function login(found) {
                 if (found !== null) {
-                    console.log('found user');
-                    $location.url('/user/' + found._id);
+                    $location.url('/profile');
+                    // $scope.message = "Welcome " + username;
                 } else {
-                    console.log('user not found');
                     model.message = "Username " + username + " not found, please try again";
                 }
             }
-
         };
     }
 })();

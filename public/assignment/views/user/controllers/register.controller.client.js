@@ -13,6 +13,18 @@
         // implementation
         function register(username, password, password2) {
 
+            if(!password) {
+                model.error = "Password is required";
+                return;
+            }
+            if(!password2) {
+                model.error = "Passwords are required";
+                return;
+            }
+            if(!username) {
+                model.error = "A username is required";
+                return;
+            }
             if(password !== password2) {
                 model.error = "Passwords must match";
                 return;
@@ -29,9 +41,9 @@
                 };
                 // model.message = user;
                 userService
-                    .createUser(user)
+                    .register(user)
                     .then(function(user){
-                        $location.url('/user/' + user._id);
+                        $location.url('/profile');
                     });
             }
         }

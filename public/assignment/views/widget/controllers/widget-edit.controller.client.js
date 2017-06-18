@@ -36,6 +36,10 @@
         };
 
         model.updateWidget = function (widget) {
+            if(!widget.name){
+                model.message = "A name is required.";
+                return;
+            }
             widgetService
                 .updateWidget(widget)
                 .then(function () {

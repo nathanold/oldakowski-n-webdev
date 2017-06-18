@@ -20,6 +20,10 @@
         }
 
         function createWebsite(website) {
+            if(!website.name){
+                model.message = "A name is required";
+                return;
+            }
             website.developerId = model.userId;
             console.log(website.name);
             websiteService

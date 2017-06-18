@@ -34,6 +34,10 @@
 
         model.updateWebsite = function (website) {
             console.log('updating ' + website._id);
+            if(!website.name){
+                model.message = "A name is required";
+                return;
+            }
             websiteService
                 .updateWebsite(website)
                 .then(function () {

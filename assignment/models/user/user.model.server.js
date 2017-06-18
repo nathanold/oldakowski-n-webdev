@@ -9,6 +9,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = userModel;
 function createUser(user) {
@@ -40,4 +41,7 @@ function updateUser(userId, newUser){
 
 function deleteUser(userId){
     return userModel.remove({_id: userId});
+}
+function findUserByGoogleId(googleId){
+    return userModel.findOne({'google.id': googleId});
 }
